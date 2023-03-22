@@ -8,6 +8,7 @@ class Movie
     public $movie_description;
 
 
+
     // Mi passo le variabili con un costruttore
     public function __construct($_movie_title, $_movie_description)
     {
@@ -45,13 +46,18 @@ $movies = [
     <!-- LINK -->
     <!-- Font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
     <div>
-        <?php forEach($movies as $movie):?>
-            <h3><?= $post->title?></h3>
-             <h3><?= $post->title?></h3>         
+        <?php foreach ($movies as $movie) { ?>
+            <h3><?= $movie->movie_title; ?></h3>
+            <p><?= $movie->movie_description; ?></p>
+
+
+        <?php } ?>
     </div>
 
 </body>
