@@ -6,31 +6,47 @@ class Movie
     // Con le sue specifiche caratteristiche
     public $movie_title;
     public $movie_description;
+    public $genres;
 
 
-
-    // Mi passo le variabili con un costruttore
-    public function __construct($_movie_title, $_movie_description)
+    // Mi passo le variabili con un costruttore e specifico il TIPO di dato per evitare problemi futuri
+    public function __construct(string $_movie_title, string $_movie_description, array $_genres)
     {
-        $this->movie_title = $_movie_title;
-        $this->movie_description = $_movie_description;
+        $this->setTitle($_movie_title);
+        $this->setDescription($_movie_description);
+        $this->genres = $_genres;
     }
 
-    public function movieList($movie)
+    public function setTitle($movie_title)
     {
-        echo "$movie->movie_title";
-        echo "$movie->movie_description";
+        if (!is_string($movie_title) || $movie_title === "") return false;
+        $this->movie_title = $movie_title;
+    }
+    public function setDescription($movie_description)
+    {
+        if (!is_string($movie_description) || $movie_description === "") return false;
+        $this->movie_description = $movie_description;
+    }
+}
+
+class Genre
+{
+    public $name;
+
+    public function __construct($_name)
+    {
+        $this->name = $_name;
     }
 }
 
 // Creo un'istanza di quella classe- in questo caso un array di istanze
 $movies = [
-    new Movie("Requiem for a Dream", "loremipsum"),
-    new Movie("Mr. Nobody", "loremipsum"),
-    new Movie("Brokeback Mountain", "loremipsum"),
-    new Movie("The Lion King", "loremipsum"),
-    new Movie("The Theory of Everything", "loremipsum"),
-    new Movie("Call me by your name", "loremipsum"),
+    new Movie("Requiem for a Dream", "loremipsum", [new Genre("Drammatic"), new Genre("Romance")]),
+    new Movie("Mr. Nobody", "loremipsum", [new Genre("Drammatic"), new Genre("Romance")]),
+    new Movie("Brokeback Mountain", "loremipsum", [new Genre("Drammatic"), new Genre("Romance")]),
+    new Movie("The Lion King", "loremipsum", [new Genre("Drammatic"), new Genre("Romance")]),
+    new Movie("The Theory of Everything", "loremipsum", [new Genre("Drammatic"), new Genre("Romance")]),
+    new Movie("Call me by your name", "loremipsum", [new Genre("Drammatic"), new Genre("Romance")]),
 ];
 ?>
 
